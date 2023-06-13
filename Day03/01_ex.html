@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS 기초문법</title>
+        <!-- 스타일을 작성하는 영역 -->
+        <style>
+            /* 이 영역 안에서는 CSS 문법체계를 따름 */
+            /* 기본문법 - 선택자{속성:값;} */
+
+            /* 요소를 찾는 선택자의 종류 */
+
+            /* 1. 타입(요소) 선택자 */
+            h2{color: red;}
+            p{color: salmon; font-family: serif;}
+
+            /* 2. 전체 선택자 */
+            *{font-style: italic; color: thistle;}
+            /* 같은 스타일 적용시 개별 선택자가 우선 적용됨 */
+
+            /* 3. 아이디 선택자 */
+            #p1{color:  yellowgreen;}
+
+            /* 4. 클래스 선택자 */
+            .aa{color: violet;}
+
+            /* 5. 선택자 그룹 */
+            li,a{color: powderblue;}
+
+            /* 6. 자식, 자손 선택자 */
+            #ss>p{color: slateblue;}
+            #ss p{color: silver;}
+
+            /* 아래 둘은 완전히 다른것 */
+            /* p.aa{} : p요소중에서 클래스 속성값이 aa인 요소 */
+            /* p .aa{} : p요소의 자손들중에서 클래스 속성값이 aa인 요소 */
+
+            /* 복합적으로 사용하는 선택자 */
+            #kk ul.gg>li{background-color: skyblue;}
+
+            /* 7. 속성 선택자 */
+            p[class]{font-size: 30px;}
+            div[id="ss"]{font-weight: bold;}
+
+            /* 8. 의사 선택자 */
+            a:link{color: aquamarine;}
+            a:visited{color: cadetblue;}
+            a:hover{color: chartreuse;}
+            a:active{color: tomato;}
+
+            #kk ul li:first-child{color: cornflowerblue;}
+            #kk ul li:nth-child(2){color: coral;}
+            #kk ul li:last-child{color: gold;}
+
+            /* 수식을 이용한 n번째 자식 요소 선택 */
+            table tr:nth-child(2n+1){background-color: hotpink;} /* n : 0,1,2,3... 자동으로 증가 */
+        </style>
+    </head>
+    <body>
+        <h2 class="aa">CSS Selector</h2>
+
+        <p id="p1">Hello World</p>
+        <p class="aa">Nice to meet you</p>
+
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <a href="">Naver</a>
+
+        <div id="ss">
+            <h4>Region</h4>
+            <p>Hello:p</p>
+            <div>
+                <p>Apple</p>
+                <p>Banana</p>
+                <p>Orange</p>
+            </div>
+        </div>
+
+        <div id="kk">
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+            <ul class="gg">
+                <li>uuu</li>
+                <li>ppp</li>
+                <li>www</li>
+            </ul>
+        </div>
+
+        <a href="http://www.google.com">Google</a>
+
+        <table border="1">
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+        </table>
+
+    </body>
+</html>

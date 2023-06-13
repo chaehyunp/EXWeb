@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Element control</title>
+        <script>
+            function aaa(){
+                //두 수를 입력하는 입력요소 찾아오기
+                var e1 = document.getElementById("in1").value;
+                var e2 = document.getElementById("in2").value;
+
+                //두 요소에 써있는 글씨얻어오기
+                var result = parseInt(e1) + parseInt(e2);
+                var e3 = document.getElementById("result");
+                e3.value = result;
+            }
+
+            function changeColor(){
+                var e = document.getElementById("aa");
+                e.style.backgroundColor = "yellow";
+                e.style.color = "red";
+                e.style.border = "1px solid blue";
+            }
+
+            function changeImage(){
+                var es = document.getElementsByTagName("img"); 
+                //id는 요소가 하나이기때문에 element, tagName은 여러개일 수 있으므로 elements --> 배열로 찾음
+                es[0].src = "./zzang_shiningeyes.jpg"
+            }
+
+        </script>
+    </head>
+    <body>
+        <input type="text" id="in1"><br>
+        <input type="text" id="in2"><br>
+        <button onclick="aaa()">계산</button><br>
+        <input type="text" id="result" readonly><br>
+
+        <hr>
+
+        <!-- HTML 요소의 특정 스타일 변경해보기 -->
+        <h2 id="aa">This is Heading</h2>
+        <button onclick="changeColor()">change background color</button>
+
+        <hr>
+
+        <!-- 이미지 변경하기 -->
+        <img src="./hoon_likemiri.jpg" alt="hoon" width="30%">
+        <button onclick="changeImage()">change image</button>
+
+        <hr>
+
+        <!-- <script>와 HTML요소를 혼합하여 사용하는 경우도 많음 -->
+        <table border="1" style="text-align: center;">
+            <tr>
+                <th>Number</th>
+            </tr>
+
+            <script>
+                for(var i=0; i<10; i++){
+                    document.write('<tr><td>'+i+'</td></tr>');
+                }
+            </script>
+
+        </table>
+
+    </body>
+</html>

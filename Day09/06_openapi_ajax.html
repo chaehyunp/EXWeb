@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Open api ajax</title>
+    </head>
+    <body>
+        <button onclick="clickBtn()">GET OPEN API DATA</button>
+        <div id="target"></div>
+        <script>
+
+            //cross origin 문제를 해결하기위해 중간 php 서버 프로그램 이용
+
+            var xhr= new XMLHttpRequest();
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                        document.getElementById('target').innerHTML= xhr.responseText;
+                    }
+            }
+            xhr.open('GET', './openapi_cors.php', true);
+            xhr.send();
+        </script>
+    </body>
+</html>

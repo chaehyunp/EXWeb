@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS variable</title>
+        <script>
+
+            //자료형의 종류
+            //1. 수치형 : number - 정수, 실수
+            //2. 문자형 : string - 한문자, 문자열['',""]
+            //3. 논리형 : boolean - true, false
+            //4. 객체형 : object - 내장, 함수
+            //5. undefined : 값이 없는 변수
+
+            //변수만들기
+            var a;
+            a = 10;
+            document.write(a + "<br>");
+            document.write(typeof(a) + "<br>");
+
+            var b = "Hello";
+            document.write(b + "<br>");
+            document.write(typeof(b) + "<br>");
+
+            var c = true;
+            document.write(c + "<br>");
+            document.write(typeof(c) + "<br>");
+
+            var d = new Date();
+            document.write(d + "<br>");
+            document.write(typeof(d) + "<br>");
+
+            var e; //undefined는 자료형과 값 모두 undefined
+            document.write(e + "<br>");
+            document.write(typeof(e) + "<br>");
+
+            document.write("<hr>");
+
+            //JS는 동적 타이핑(자료형) 언어이므로 변수에 값이 대입될때 자료형이 결정됨 
+            //따라서 변수의 자료형 변경도 가능 - 자료형에 의해 에러를 찾기 힘들어짐... 막아주는 라이브러리가 있을 정도
+
+            var f = 10;
+            document.write(f+" - "+typeof(f)+"<br>");
+
+            f = "Kim";
+            document.write(f+" - "+typeof(f)+"<br>");
+
+            //JS는 함수형 언어이기에 함수를 객체처럼 변수에 대입할 수도 있음
+            var h = function(){ //익명함수
+                document.write("hhh...<br>");
+            };
+
+            document.write(h + "<br>"); //변수의 값 - 즉, 함수코드가 출력됨
+            document.write(typeof(h)+"<br>");
+
+            //함수를 가지는 변수의 이름을 통해 함수명으로 호출할 수 있음
+            h();
+
+            //문자열은 String객체로 자동 wrapping 되기에 객체처럼 사용가능함
+            var s = "Hello";
+            document.write(s.length);
+
+            document.write( s.charAt(1) );
+            document.write("<br>");
+
+            document.write( s.toUpperCase() );
+            document.write("<br>");
+
+            document.write("<hr>");
+
+            //변수 사용할때 특이한 점
+            //같은 변수를 또 만들어도 에러 아님 - 그냥 var 키워드만 무시함
+            var a = 10;
+            var a;
+
+            document.write(a);
+            document.write("<hr>");
+
+            var a = 20; //위에서 a 변수를 만들었기때문에 var 키워드를 무시하고 변수의 값을 변경함
+            document.write(a);
+            document.write("<br>");
+
+            //수치형 변수값 표현법
+            var b = 3.14;
+            document.write(b);
+            document.write("<br>");
+
+            b = 123.5e3; //123.5 X 10의 3승 = 123500
+            document.write(b);
+            document.write("<br>");
+
+            b = 123.5e-3; //123.5 X 10의 -3승 = 0.1235
+            document.write(b);
+            document.write("<br>");
+
+            //연산자는 특별하게 다른 점은 없음 - 비교연산자 특이한 점
+            var c = 1; //number
+            var d = "1"; //string
+            var e = 1.0; //number
+
+            //== 비교연산자 : 자료형은 구분하지 않고 비교
+            document.write(c==d);
+            document.write("<br>");
+            document.write(c==e);
+            document.write("<br>");
+
+            //=== 비교연산자 : 자료형과 값 모두 비교
+            document.write(c===d);
+            document.write("<br>");
+            document.write(c===e);
+            document.write("<br>");
+
+            document.write("<hr>");
+
+            //0 나눗셈 - java에서는 에러, js는 에러가 아니고 Infinity
+            document.write(10/0);
+            document.write("<br>");
+
+            //비트연산자 중에서 >>> : 부호비트(양수0, 음수1)까지 포함하여 시프트
+            //양수값일때는 >>와 차이가 없음
+            var f = 10;
+            document.write(f>>2);
+            document.write("<br>");
+
+            document.write(f>>>2);
+            document.write("<br>");
+            
+            //음수일때 부호비트 1까지도 밀어버려, 부호비트 자리가 0으로 바뀌어 양수가 되어버림
+            var f = -16;
+            document.write(f>>2);
+            document.write("<br>");
+
+            document.write(f>>>2);
+            document.write("<br>");
+
+            //표현 가능한 수치값 확인
+            document.write(Number.MAX_VALUE)
+            document.write("<br>");
+
+            //in, delete, instanceof라는 연산자도 있음(객체 수업시간에)
+            document.write("<hr>");
+
+            //수치형과 문자형의 변환 : GUI 프로그래밍의 가장 기본
+            var h = 1;
+            document.write(typeof(h)+"<br>");
+            h = String(h); //number --> string
+            h = h + ""; //이 방식을 더 선호
+            document.write(typeof(h)+"<br>");
+
+            //문자형을 수치형으로 변환
+            h = parseInt("4");
+            document.write(typeof(h)+"<br>");
+
+            h = parseFloat("3.14");
+            document.write(typeof(h)+"<br>");
+
+            //수치형 <--> 문자형의 변환이 왜 필요?
+            //GUI에서는 모든 사용자 입출력이 문자열이기때문
+            var age = prompt("input your age", "0"); //사용자 입력을 받아주는 다이얼로그
+            document.write(age + 3); //age를 문자열로 인식하기에 결합이 되어버림
+            document.write("<br>");
+
+            age = parseInt(age);
+            document.write(age + 3);
+            document.write("<br>");
+
+            //다이얼로그로 사용자 입력받으려니 짜증
+            //html 입력 요소를 이용하여 사용자 입력 받아 계산하기
+            //JS로 html 요소를 직접 제어해보기
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

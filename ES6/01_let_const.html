@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS es6</title>
+</head>
+<body>
+    <script>
+
+        //ECMAScript6(2015 : ES6 or ES2015)의 새로운 문법들
+
+        //1. 변수를 선언하는 키워드 추가 : let, const
+
+        //기존 var 변수
+        var a = 10
+        document.write(a+"<br>")
+
+        //혹시 같은 이름의 변수를 또 선언하면? var 키워드 무시
+        var a = 20 
+        document.write(a+"<br>")
+
+        //새로운 let 변수
+        let b = 100
+        document.write(b+"<br>")
+
+        //같은 이름의 let 변수를 또 선언하면? - 문법적 에러 [ 치명적 에러이므로 이 script 전체가 실행불가 ]
+        // let b = 200
+        // document.write(b+"<br>")
+
+        //let도 변수이므로 값을 변경할 수 있음
+        b = 200
+        document.write(b+"<br>")
+
+        //새로운 키워드 const 상수
+        const c = 100
+        document.write(c+"<br>")
+
+        //상수이므로 값 변경 불가 [ 치명적 에러는 아니므로(exception에 가까움) 위에까지는 실행됨 ]
+        // c = 2000
+        // document.write(c+"<br>")
+
+        //당연히 const도 같은 이름의 상수 선언은 문법적 에러 [ 치명적 에러 ]
+        // const c = 2000
+        // document.write(c+"<br>")
+
+        //let 변수도 동적타입 변수임은 같음
+        let d = "aaa"
+        document.write(typeof(d)+"<br>")
+
+        d = 30;
+        document.write(typeof(d)+"<br>")
+
+        d = true
+        document.write(typeof(d)+"<br>")
+
+        d = new Date()
+        document.write(typeof(d)+"<br>")
+
+        document.write("<hr>")
+
+        //let,const 키워드가 기존 var 키워드와 다른 또 한가지 : 변수가 인식되는 범위가 다름
+        
+        //기존 var 키워드 변수의 지역범위 - 함수단위
+        function aaa(){
+            var n = 100
+            document.write("n : " + n + "<br>")
+        }
+        aaa()
+
+        //함수밖에서 함수의 지역변수 n을 사용해보기
+        // document.write("n : " + n + "<br>") //n을 인식할 수 없으므로 에러
+
+        if(true) {
+            var m = 200 //지역변수? 가 아님 : var 키워드 변수의 지역범위 - 함수단위!!!
+            document.write("m : " + m + "<br>")
+        }
+        document.write("m : " + m + "<br>")
+
+        //대부분의 native 언어들은 지역의 범위를 {}로 구별함
+        //let, const는 var과 다르게 {}가 지역단위를 이룸
+        if(true) {
+            let k = 300 //지역변수
+            document.write("K : " + k + "<br>")
+        }
+        // document.write("K : " + k + "<br>") //에러, k 변수 인식 불가
+
+    </script>
+</body>
+</html>

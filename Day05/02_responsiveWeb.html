@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>반응형 웹디자인</title>
+        <style>
+            *{padding: 0px; margin: 0px;}
+            #wrapper{
+                width: 90%;
+                border: 4px solid black;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #wrapper div{
+                display: inline-block;
+                height: 100px;
+                width: 100%;
+            }
+            /* 각 영역들의 배경색 지정 */
+            #wrapper div:first-child{
+                background-color: aqua;
+            }
+            #wrapper div:nth-child(2){
+                background-color: lightgreen;
+            }
+            #wrapper div:nth-child(3){
+                background-color: salmon;
+            }
+            #wrapper div:nth-child(4){
+                background-color: royalblue;
+            }
+            #wrapper div:last-child{
+                background-color: khaki;
+            }
+
+            /* 미디어쿼리 적용 */
+            @media all and (min-width:320px){
+                #wrapper div{width: 100%;}
+            }
+            @media all and (min-width:600px) and (max-width:800px){
+                #wrapper div{width: 50%;}
+                /* 막내에게 직접 줬기때문에 800px이 넘어도 커진 상태로 있음 */
+                #wrapper div:last-child{width: 100%;}
+            }
+            @media all and (min-width:800px){
+                #wrapper div{width: 20%;}
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- html에서 엔터는 띄어쓰기로 반영됨, 따라서 띄어쓰기 공간 때문에 div의 공간이 부족해짐 -->
+            <div>aa</div><div>bb</div><div>cc</div><div>dd</div><div>ee</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Dialog</title>
+        <script>
+
+            //다이얼로그 3종류
+            //1. 일반 경고창 - 확인버튼 1개짜리
+            alert(); //동기식이므로 넘어가지 않을 경우 아래 내용 실행되지 않음
+            alert('알림');
+
+            //2. 사용자에게 확인/취소를 선택하게 하는 다이얼로그
+            var answer = confirm('종료하시겠습니까?'); //선택값을 리턴
+
+            document.write('선택결과 : ' + answer);
+
+            //3. 사용자의 글씨 입력. - 리턴은 문자열(string) - 취소는 null(undefined가 아님, null은 object)
+            var age= prompt("당신의 나이를 입력하세요.", "0");
+            document.write(age +"<br>");
+            document.write(typeof(age) +"<br>");
+
+            document.write("<br>다이얼로그...<br>");
+
+        </script>
+    </head>
+</html>

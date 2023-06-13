@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Test</title>
+
+        <!-- 웹 브라우저가 interprete(통역)해서 실행하는 프로그래밍 코드 작성 -->
+        <!-- 내부스크립트 -->
+        <script>
+            // 이 <script> 영역 안에서는 JavaScript의 문법체계를 따름
+            // HTML에서 body 안에 했던 모든 작업을 script로 처리 가능
+            // 화면에 출력
+            document.write("Hello world!");
+
+            //자동 줄바꿈 되지 않음
+            document.write('자동 줄바꿈 하려면 <br>태그 이용'); //문자열 안에 태그를 써도 작동함
+
+            //HTML의 태그문을 직접 작성할 수도 있음
+            document.write('<hr>');
+            document.write('<a href="">Google</a>');
+
+            document.write('<hr>');
+
+            //JS는 프로그래밍 언어이기에 변수나 객체, 연산자, 제어문 등이 가능
+            var a = 10;
+            document.write(a + "<br>");
+
+            var b = new Date();
+            document.write(b + "<br>");
+
+            //이벤트에 의해 자동 발동하는 함수 정의
+            function aaa(){
+                //alfert('clicked button');
+                document.write('clicked button'); 
+                //기존에 있던 문서에 이어붙이기가 아님
+                //body 영역이 모두 그려진 후에 document.write()하면 화면이 새로 갱신됨
+            }
+
+            //문자의 끝을 나타내는 세미콜론(;)은 생략 가능
+            document.write('<hr>')
+            document.write('안녕하세용')
+
+        </script>
+
+        <!-- 외부스크립트 -->
+        <script src="./01_ex.js"></script>
+
+    </head>
+    <body>
+        
+        <!-- JS와 함께 HTML 요소가 존재해도 됨 -->
+        <h2>Hello JavaScript</h2>
+
+        <!-- JS의 존재 이유는 요소의 이벤트 처리 -->
+        <button onclick="aaa()">버튼</button>
+
+    </body>
+</html>

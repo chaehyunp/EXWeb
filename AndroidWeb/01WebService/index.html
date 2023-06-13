@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <!-- 1. 화면에 안보이는 영역 -->
+    <head>
+        <title>My Web Page</title>
+        <!-- 기본적으로 한글은 깨지지만 요즘 브라우저들은 개선되어 깨지지 않음 -->
+        <!-- 그래도 유니코드 메타 데이터를 명시해두는 것이 좋음, empty요소는 엔드태그 필요없음 -->
+        <meta charset="utf-8">
+
+        <!-- 스타일 작업 : CSS라는 언어문법 사용 -->
+        <!-- <style>
+            /*<style> 태그문 안에서는 html 문법이 아니라 css 문법체계 사용*/
+            h2{background-color: aquamarine;}
+            p{color: blue;}
+            img{width: 150px; height: 80px;}
+        </style> -->
+
+        <!-- 외부에 만든 스타일시트 (.css) 연결 -->
+        <link rel="stylesheet" href="./index.css">
+
+        <!-- 동적 동작 코딩을 위한 JavaScript 언어 사용 -->
+        <!-- <script>
+            //<script>영역 안에서는 JS 언어문법 체계 따름
+            function show() {
+                alert("click login"); //다이얼로그를 보여주는 함수 호출
+            }
+            function changeImage() {
+                //이미지를 가지고 있는 요소(img)를 찾아오기
+                var e = document.getElementById("cute");
+                e.src = "./zzang_gameat.jpg";
+            }
+        </script> -->
+        <!-- 외부에 만든 자바스크립트 (.js) 연동 -->
+        <script src="./index.js"></script>
+
+    </head>
+
+    <!-- 2. 주소창 아래 화면에 보이는 영역 -->
+    <body>
+        <h2>My First Web Page</h2>
+        <p>This is first Web Page</p>
+        <p>한글 쌉가능</p>
+        
+        <img src = "./zzang_buyitforcuteme.jpg" id="cute">
+        <br>
+        <button onclick="show()">Login</button>
+        <button onclick="changeImage()">Change</button>
+    </body> 
+</html>

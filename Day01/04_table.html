@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Table element</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Sam</td>
+                <td>Hello World</td>
+            </tr>
+            <!-- 각 행 (row)의 데이터(셀)가 다르면? -->
+            <tr>
+                <td>2</td>
+                <td>Robin</td>
+                <td>Nice Day</td>
+                <td>2023-04-27</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <!-- 셀병합 -->
+        <table border="1">
+            <!-- 한 줄만 있으면 비교할 셀 크기가 없기때문에 span의 영역이 없음 -->
+            <tr>
+                <td rowspan="2">111</td>
+                <td colspan="3">222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>666</td>
+            </tr>
+            <!-- 테이블 제목 -->
+            <caption>테이블 제목</caption>
+        </table>
+
+        <hr>
+
+        <!-- 테이블 셀영역(<td></td>) 안에 다른 요소(element)추가 -->
+        <table border="1" width="100%">
+            <tr>
+                <td width="30%"><a href="www.naver.com">NAVER</a></td>
+                <td>
+                    <ul>
+                        <li>aaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>테이블 안에는 어떤 요소든 배치 가능</p>
+                </td>
+                <td>
+                    <img src="./zzang_coffee_01.jpg" alt="커피타는 짱구" width="100%">
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

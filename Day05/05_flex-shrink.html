@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container{
+                display: flex;
+            }
+
+            .container>div{
+                background-color: aqua;
+                width: 100px;
+                margin: 10px;
+                line-height: 50px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>flex shrink property</h1>
+
+        <div class="container">
+            <div>1</div>
+            <div>2</div>
+            <div style="flex-shrink: 0;">3</div> 
+            <div>4</div>
+            <div>5</div>
+            <div style="flex-shrink: 1;">6</div> <!-- 기본값이 1 -->
+            <div>7</div>
+            <div>8</div>
+            <div style="flex-shrink: 2;">9</div>
+            <div>10</div>
+        </div>
+    </body>
+</html>

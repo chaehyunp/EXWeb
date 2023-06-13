@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS HTTP 통신 라이브러리</title>
+    </head>
+    <body>
+        <button onclick="aaa()">get method test</button>
+        <button onclick="bbb()">post method test</button>
+
+        <hr>
+
+        <div id="target"></div>
+
+        <script>
+            function aaa(){
+                //GET 방식
+
+                var url = './getTest.php?name=Rosa&msg=Good';
+
+                //fetch 라이브러리 - promise 기법 이용
+                //비동기, fetch 그리고 다음 함수영역하기로 약속
+                fetch(url).then(function(response){ //응답객체 : response
+                    //응답객체가 가지고 온 응답 결과를 글씨로 변환
+                    return response.text(); //비동기 작업 - 바로 받을 수 없음
+                }).then(function(responseText){
+                    document.querySelector('#target').innerHTML = responseText;
+                })
+            }
+            
+            function bbb(){
+                //POST 방식
+
+                var url = './postTest.php';
+                var data = "title=Hello&msg=Nice to meet you";
+
+                //옵션을 안쓰면 자동 GET
+                fetch(url, {
+                    method:"POST",
+                    headers:{'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'},
+                    body: data
+                }).then(function(response){
+                    return response.text();
+                }).then(function(text){
+                    document.querySelector('#target').innerHTML = text;
+                });
+            }
+        </script>
+    </body>
+</html>

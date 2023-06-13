@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>EX</title>
+    </head>
+    <body>
+        <!-- 오디오 -->
+        <audio src="./audio/old_pop.mp3" controls></audio>
+
+        <!-- 브라우저마다 호환되는 음원의 파일형식이 다를 수 있음 -->
+        <!-- 속성명과 값이 같은 글씨라면 속성명만 기입하는 축약설정이 가능 -->
+        <!-- 온라인 컨버터 사이트를 이용하여 다른 파일형식 만들기 -->
+        <audio controls>
+            <source src="./audio/old_pop.mp3" type="audio/mp3">
+            <source src="./audio/old_pop.wav" type="audio/wav">
+            <source src="./audio/old_pop.ogg" type="audio/ogg">
+        </audio>
+
+        <!-- 비디오 -->
+        <video src="./video/movie.ogv" controls></video>
+
+        <!-- 브라우저 호환성을 고려하여 여러 파일 형식 등록 -->
+        <video controls width="640" height="480" poster="./image/hoon_likemiri.jpg" preload="auto">
+            <source src="./video/trailer.mp4" type="video/mp4">
+            <source src="./video/trailer.ogv" type="video/ogg">
+            <source src="./video/trailer.webm" type="video/webm">
+        </video>
+
+        <hr>
+
+        <!-- Inline Frame 요소 -->
+        <iframe src="../Day01/02_text.html" frameborder="1"></iframe>
+        <!-- 다른 서버의 웹문서도 포함 가능 -->
+        <iframe src="http://testhue96.dothome.co.kr/index.html" frameborder="1"></iframe>
+        <iframe src="https://www.plus-ex.com/" frameborder="0"></iframe>
+
+        <!-- 하이퍼링크요소 <a>와 <iframe>을 함께 사용 -->
+        <!-- anchor 요소에 의해 열리는 웹문서의 target을 iframe으로 지정 -->
+        <iframe src="" frameborder="1" name="aaa"></iframe>
+        <a href="http://www.w3c.org" target="aaa">월드와이드웹 공식사이트</a>
+        <a href="http://www.google.com" target="aaa">구글</a>
+
+        <!-- 영역 그룹 요소 : div(블럭요소), span(인라인요소) -->
+        <div style="background-color: blanchedalmond; border: 2px solid orange;">
+            <h2>title</h2>
+            <p>this is message</p>
+        </div>
+
+        <!-- div의 블럭요소 특징 -->
+        <p>안녕하세요, <div style="color: darkseagreen;">홍길동</div>입니다.</p>
+        <!-- span의 인라인요소 특징 -->
+        <p>안녕하세요, <span style="color: darkseagreen;">홍길동</span>입니다.</p>
+
+    </body>
+</html>

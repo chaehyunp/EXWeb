@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>List, Anchor, Image</title>
+    </head>
+    <body>
+        <!-- List 요소 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+        <dl>
+            <dt>aaa</dt>
+            <dl>이것은 Definition Data 입니다.</dl>
+        </dl>
+
+    <hr>
+
+    <!-- 하이퍼링크 anchor 요소 -->
+    <a href="https://www.naver.com/">NAVER</a> 
+    <br>
+    <a href="./ex01_StarCoffe.html" target="_blank">상대주소로 다른 html 문서</a> 
+    <br>
+    <a href="#help">도움말 위치로 이동</a> 
+    <br>
+    <hr>
+    <h4 id="help">도움말</h4>
+    <!-- br 태그로 줄바꿈 하는 대신에 단락 안에 요소 -->
+    <p><a href="">aaa</a></p>
+    <p><a href="">bbb</a></p>
+
+    <ul>
+        <li><a href="">111</a></li>
+        <li><a href="">222</a></li>
+        <li><a href="">333</a></li>
+    </ul>
+
+    <!--href에 이메일 주소를 하이퍼링크 -->
+    <p><a href="mailto:chhue96@gmail.com">chhue96@gmail.com</a></p>
+
+    <!-- 이미지 보기 -->
+    <p><a href="https://mblogthumb-phinf.pstatic.net/20130830_221/missj0_1377851833119YVYyF_PNG/2013-08-22_17%3B59%3B38.PNG?type=w2">이미지 보기</a></p>
+    <p><a href="./zzang_weiredface.png">내 폴더 안 이미지 보기</a></p>
+
+    <!-- 다운로드 링크 : 브라우저가 보여줄 수 없는 파일형식은 다운로드됨 -->
+    <p><a href="http://mrhi2023.dothome.co.kr/aaa.zip">압축문서 다운로드</a></p>
+
+    <hr>
+
+    <!-- 이미지 요소 : empty element-->
+    <img src="./zzang_weiredface.png" alt="weiredface">
+    <img src="./zzang_weiredface.png" alt="weiredface" width="200" height="100">
+    <img src="http://mrhi2023.dothome.co.kr/newyork.jpg" alt="" width="50%">
+    <img src="./aaa.jpg" alt="이미지가 없을 때 보여지는 글씨">
+
+    <!-- img + a -->
+    <a href=""><img src="./zzang_weiredface.png" alt="짱구" width="100"></a>
+
+    </body>
+
+</html>

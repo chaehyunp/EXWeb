@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Regular Expression</title>
+    </head>
+    <body>
+
+        <input type="text" id="in1">
+        <button onclick="check()">유효성검증</button>
+        <h3 id="aa"></h3>
+        
+    </body>
+
+    <script>
+        function check(){
+            //검증용 정규표현식
+            var regExp = /^[a-zA-Z]+$/ //영문자 하나 이상, 슬래시사이에 입력하는것 자체가 RegExp객체
+
+            var e = document.getElementById('in1');
+            //입력된 글씨값
+            var s = e.value;
+
+            //검증 2가지 방법
+            //1. String .match()
+            // if(s.match(regExp)) alert("올바른 형식입니다.");
+            // else alert("요구하는 형식이 아닙니다.");
+
+            //2. RegExp 객체의 test()
+            // if(regExp.test(s)) alert("올바른 형식입니다.");
+            // else alert("요구하는 형식이 아닙니다.");
+
+            //정규표현식 연습
+            regExp = /a/;  // a가 포함된 모든 입력 OK
+            regExp = /^a/; //시작이 무조건 a
+            regExp = /^[a-z]/; //시작이 무조건 영어소문자
+            regExp = /a$/; //끝이 무조건 a
+            regExp = /^a$/; //a 한글자만
+            regExp = /^[a-z]$/; //영어소문자 한글자
+            regExp = /^[a-zA-Z]/; //영문자 한글자
+            regExp = /^[a-zA-Z0-9]/; //영문자 or 숫자 한글자
+            regExp = /^[a-z]{2}$/; //영어소문자 두글자
+            regExp = /^[a-z]{2,4}$/; //영어소문자 두글자 ~ 네글자
+            regExp = /^[a-z]{4,}$/; //영어소문자 네글자 이상
+            regExp = /^\w{4,}$/;  // 문자 or 숫자 4글자 이상!
+            regExp = /^[a-z]*$/; //영어소문자 0개 이상 (값이 없어도 됨)
+            regExp = /^[a-z]+$/;  // 영어소문자 1개 이상 
+            regExp = /^[a-z]?$/;  // 영어소문자 1개 or 0개 (값이 없어도 됨)
+            regExp = /^\d$/;  // 숫자 1개 
+            regExp = /^\d\d\d$/;  // 숫자 3개 
+
+            //생년월일 형식 검증 ####-##-##
+            regExp= /^\d\d\d\d-\d\d-\d\d$/;
+
+            //이메일 형식   ####@###.##
+            regExp= /^[a-zA-Z0-9!$%^&]+@[a-zA-Z]+.[a-z]*$/;
+
+            //URL 주소가 맞는지 확인
+            regExp = /^http:/;
+
+            //슬래시 - escape문자 역슬래시(\ㄴ) 필요
+            regExp = /^\/$/
+
+                
+            var h = document.getElementById('aa');
+
+            if( regExp.test(s) ) h.innerHTML = "올바른 형식입니다."
+            else h.innerHTML = "요구하는 형식이 아닙니다.";
+        }
+    </script>
+</html>

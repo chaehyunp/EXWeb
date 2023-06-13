@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Web Worker</title>
+
+        <script>
+            function aaa(){
+                var n = 0;
+                while(true){
+                    n++;
+                    // 글씨를 찍는것도 메인스레드가 해야하는데 카운트를 하기때문에 찍을 수 없음
+                    document.getElementById('hh').innerHTML = n;
+                }
+            }
+
+            var w;
+            function bbb(){
+                //웹워커는 네트워크 상태에서만 작동함
+
+                if(w==undefined){
+                    w = new Worker('worker.js'); //워커객체를 만들면 자동 start
+
+                    //워커 포스트 받기
+                    w.onmessage = function(event){
+                        document.getElementById('hh').innerHTML = event.data;
+                    }
+
+                } else alert('이미 워커 일하는중');
+                
+            }
+
+            function ccc(){
+                w.terminate();
+                w= undefined;
+            }
+
+            //메인스레드도 워커에게 메시지 전달 가능
+            // w.postMessage("Sam");
+
+            
+        </script>
+    </head>
+    <body>
+        <!-- 워커(스레드)를 사용하지 않았을때 문제점 확인 -->
+        <button onclick="aaa()">무한반복문</button>
+        <h2 id="hh"></h2>
+
+        <hr>
+
+        <button onclick="alert('clicked')">버튼</button>
+
+        <hr>
+
+        <button onclick="bbb()">start Worker(스레드)</button>
+        <button onclick="ccc()">stop Worker(스레드)</button>
+    </body>
+</html>

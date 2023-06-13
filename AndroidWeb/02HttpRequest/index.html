@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Http Request</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>This is http request Test page</h2>
+        <fieldset>
+            <legend>GET METHOD TEST</legend>
+            <!-- HTML에서 서버의 다른 문서를 실행하는 요소 - HTTP 요청을 하는... -->
+        <form action="./getTest.php" method="GET">
+            <!-- php문서에 보낼 데이터를 입력받는 요소들 -->
+            <p>
+                <label for="">title:</label>
+                <input type="text" name="title">
+            </p>
+            <p>
+                <label for="">message:</label>
+                <input type="text" name="msg">
+            </p>
+            <p>
+                <!-- form요소 안에서 서버로 데이터를 전송하는 버튼 -->
+                <!-- 이 버튼을 클릭하면 form 요소의 action 속성에 지정한 문서가 실행됨 -->
+                <input type="submit">
+            </p>
+        </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>POST METHOD TEST</legend>
+            <form action="./postTest.php" method="POST">
+                <p>
+                    <label for="">ID:</label>
+                    <input type="text" name="id">
+                </p>
+                <p>
+                    <label for="">PASSWORD</label>
+                    <input type="password" name="pw">
+                </p>
+                <p>
+                    <input type="submit">
+                    <input type="reset">
+                </p>
+            </form>
+        </fieldset>
+            
+        <fieldset>
+            <legend>Image File Upload</legend> 
+            <form action="./uploadFile.php" method="POST" enctype="multipart/form-data">
+                <!-- 사용자가 파일을 선택할 수 있도록 하는 입력요소 -->
+                <input type="file" accept=".jpg" name="img">
+                <br>
+                <input type="submit">
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>POST data with File</legend>
+            <form action="./postDataFile.php" method="POST" enctype="multipart/form-data">
+                <p>
+                    <label for="">name:</label>
+                    <input type="text" name="name">
+                </p>
+                <p>
+                    <label for="">message:</label>
+                    <input type="text" name="msg">
+                </p>
+                <p>
+                    <label for="">첨부이미지:</label>
+                    <input type="file" name="img" accept="image/*">
+                </p>
+                <p>
+                    <input type="submit" value="작성완료">
+                    <input type="reset" value="취소">
+                </p>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>Load Data</legend>
+            <form action="./loadDB.php" method="get">
+                <p>
+                    <input type="submit" value="load">
+                </p>
+            </form>
+        </fieldset>
+    </body>
+</html>

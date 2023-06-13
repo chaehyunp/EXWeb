@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table{
+                border-collapse: collapse;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            table tr td,th{
+                padding: 4px;
+            }
+            table caption{
+                color: royalblue;
+                text-decoration: none;
+                margin: 10px;
+            }
+            #button{margin-bottom: 10px;}
+            #button input{
+                display: inline;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <caption>Shopping Cart</caption>
+            <tr>
+                <th>품목</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>합계</th>
+            </tr>
+            <tr>
+                <td>컴퓨터세트</td>
+                <td>2,000,000원</td>
+                <td><input type="number"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>티셔츠</td>
+                <td>50,000원</td>
+                <td><input type="number"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>음악파일</td>
+                <td>2,000,000원</td>
+                <td><input type="number"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>영화파일</td>
+                <td>2,000,000원</td>
+                <td><input type="number"></td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <div id="button">
+            <input type="button" value="계산">
+            <input type="button" value="구매">
+            <input type="reset" value="초기화">
+        </div>
+        <a href="./index.html">Back to Home</a>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Font & Text</title>
+        
+        <style>
+            /* 폰트 글꼴 지정 */
+            @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+            p{font-family: 'East Sea Dokdo', cursive; font-size: 100px;}
+            /* serif, sans-serif, monospace */
+            /* 모든 컴퓨터에서 동일한 폰트 적용하고 싶다면 -> 웹폰트 사용 :  개발자의 커스텀*/
+            @font-face {
+                font-family: "MyFont";
+                src: url(./font/Pretendard-Light.ttf);
+            }
+            p{font-family: "MyFont", sans-serif;}
+
+            /* 폰트크기 */
+            p{font-size: small;} /* 키워드로 적용 */
+            p{font-size: 16px;} /* 수치단위 px */
+            p{font-size: 1.5em;} /* 비율을 이용한 사이즈 1.5배(권장) */
+
+            /* bold, normal */
+            p{font-weight: bold;}
+            
+            /* italic, normal */
+            p{font-style: italic;}
+
+            /* 폰트 속성 4개를 한 번에 축약형으로 설정 */
+            /* 순서 : [weight/style] size family */
+            p{font: bold italic 200% "MyFont",serif;}
+
+            /* 텍스트 정렬 */
+            p{text-align: center;}
+            p{text-align: right;}
+            p{text-align: justify;} /* 양쪽정렬 */
+
+            /* 텍스트 변환 */
+            p{text-transform: uppercase;}
+            p{text-transform: lowercase;}
+            p{text-transform: capitalize;}
+
+            /* 텍스트 선긋기 */
+            p{text-decoration: overline;}
+            p{text-decoration: underline;}
+            p{text-decoration: line-through;}
+            p{text-decoration: none;}
+
+            /* 텍스트 그림자 */
+            p{text-shadow: 5px 3px 5px greenyellow;}
+
+            /* 워드 랩 */
+            p.aa{
+                border: 1px solid palevioletred; 
+                width: 5em;
+                padding: 1em;
+                word-wrap: break-word;
+            }
+            
+            #bb{
+                column-count: 2;
+                column-gap: 80px;
+                column-rule: 4px dashed;
+            }
+
+        </style>
+    </head>
+    <body>
+        <p>Hello World</p>
+        <p>안녕 세상아</p>
+
+        <p class="aa">
+            한글은 전혀 문제 없이 자동으로 워드 랩 됩니당!
+            AAAAAAAAAAAAAAAA AAAAAAAAAAAA
+        </p>
+
+        <!-- 다중 컬럼 -->
+        <p id="bb">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quibusdam labore temporibus quae molestias dolorum debitis totam voluptate nulla, doloribus nobis, expedita quas porro ducimus non delectus deleniti, sed libero.
+        </p>
+
+        <!-- 텍스트 정렬할때 인라인요소와 블럭요소의 차이 -->
+        <!-- text-align은 블럭요소에서만 의미가 있음 -->
+        <div style="text-align: center; background-color: cornflowerblue; height: 5em;">Hello</div>
+        <span style="text-align: center; background-color: orange; line-height: 5em;">Hello</span>
+    </body>
+</html>

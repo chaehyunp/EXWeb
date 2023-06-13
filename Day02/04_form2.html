@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Form element2</title>
+    </head>
+    <body>
+        <!-- 파일전송 -->
+        <form action="./file.php" method="post" enctype="multipart/form-data"> <!-- 기본적으로 cross www form (key="value"형식), 파일은 multipart-->
+            <input type="file" name="aaa" accept="image/png"> <!-- accept으로 선택할 수 있는 파일형태지정 -->
+            <input type="submit" value="전송">
+        </form>
+
+        <hr>
+
+        <!-- 여러개의 파일 전송 -->
+        <form action="./file2.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="bbb[]" multiple>
+            <input type="image" src="./image/ms20.png" width="50">
+        </form>
+    </body>
+</html>

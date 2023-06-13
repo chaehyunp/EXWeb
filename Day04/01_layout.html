@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Layout CSS</title>
+        <style>
+            /* display 속성 */
+            #aa{display: inline; width: 300px;}
+            #aa{display: inline-block; width: 300px;}
+
+            /* 인라인요소를 블럭요소로 */
+            img.bb{display: block; width: 150px;}
+
+            /* display: none */
+            #cc{display: none;}
+        </style>
+    </head>
+    <body>
+        <!-- display 속성 -->
+        <p id="aa">Hello World</p>
+        <a href="">Google</a>
+        <strong>Good morning!</strong>
+
+        <img src="./image/zzang_sheep_catch.jpg" alt="" class="bb">
+
+        <hr>
+
+        <!-- display: none -->
+        <ul>
+            <li>aaa</li>
+            <li id="cc">bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <hr>
+
+        <!-- 블럭요소와 인리인 요소를 같이 사용할때 고려할것들 -->
+        <!-- 블럭요소 안에 인라인 요소, 다른 블럭요소 모두 넣을 수 있음 -->
+        <div style="background-color: tomato; border: solid; padding: 5px;">Nice <strong>aaa</strong> World</div>
+        <div style="background-color: aquamarine; border: solid; padding: 5px;">Nice <p>aaa</p> World</div>
+
+        <!-- 블럭요소 안에 같은 블럭요소가 있다면? -->
+        <!-- 종료태그가 없어도 p의 역할이 끝났다고 생각하기 때문에 Nice에만 style이 적용됨 -->
+        <!-- 즉, 1번 p + 2번 p + 태그문없이 써진 글자 : 이렇게 세 덩어리 -->
+        <!-- 요소마다 차이가 있음, div 안에 div은 중첩처럼 적용됨 -->
+        <!-- p와 같이 역할이 있는 경우는 이러한 현상이 일어나고, div와 같은 그룹핑 요소들은 중첩 요소처럼 -->
+        <p style="background-color: khaki; border: solid; padding: 5px;">Nice <p>aaa</p> World</p>
+
+        <!-- 인라인 요소 안에 블럭요소를 넣으면? 원래 안됨 -->
+        <span style="background-color: greenyellow; border: solid; padding: 5px;">Nice <p>aaas</p> World</span>
+
+        <hr>
+
+        <!-- position 속성 -->
+        <div class="aaa">
+            <p id="one">block#1</p>
+            <p id="two">block#2</p>
+            <p id="three">block#3</p>
+        </div>
+
+        <style>
+            #one{background-color: dodgerblue; width: 200px; height: 50px;}
+
+            #two{background-color: lightblue; width: 200px; height: 50px;
+                position: static; /* 원래 놓여질 위치에 배치됨(default) */
+                position: relative ;/* 원래 놓여질 위치에서 위치속성으로 조정 가능 */
+                position: absolute; /* 문서의 좌측 상단을 기준으로 위치를 설정(원래 배치될 위치에서 벗어남) */
+                /* absolute는 기본적으로 문서(body)를 기준 */
+                /* absolute일때 부모의 영역을 기준으로 배치하고 싶다면.. 부모요소의 position 속성이 static이 아니면 됨 */
+
+                position: fixed; /* 브라우저 창의 좌측 상단을 기준으로 위치 설정 */
+
+                /* 위치좌표 설정속성 [position:static일때는 무시됨] */
+                left: 50px;
+                top: 30px; /* margin-top일 경우 겹치지 않고 아래 박스도 함께 밀림 */
+            }
+
+            #three{background-color: lightseagreen; width: 200px; height: 50px;}
+
+            /* 블럭들의 부모요소 */
+            div.aaa{
+                background-color: gainsboro;
+                position: relative;
+            }
+
+        </style>
+    </body>
+</html>

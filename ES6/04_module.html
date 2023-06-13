@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS es6 module</title>
+
+    <!-- JS는 다른 JS에서 만든 클래스나 변수를 사용할 수 없음 -->
+
+    <!-- 만약 웹을 제작중이라면 html에서 js 파일을 연결하여 사용, 서로 다른 js의 함수나 변수를 사용할 수 있음  -->
+    <!-- <script src="./module_aa.js"></script> -->
+
+    <!-- ReactNative나 js를 서버용 언어로 사용하는 node.js에서는 html없이 프로그램이 동작함 -->
+
+    <!-- html에서는 module import를 하려면 type 설정 필요 -->
+    <!-- 모듈기능은 웹서버에서만 동작함 -->
+    <script type="module">
+
+        // //다른 JS의 함수, 변수, 클래스를 가져오는 문법
+        // import show from './module_aa.js'
+
+        // //export default가 아닌 것들은 import 할때 반드시 {} 안에 작성
+        // import {addTextToBody} from './module_aa.js'
+
+        // //변수나 상수도 import 가능
+        // import {num, age} from './module_aa.js'
+
+        //같은 문서 안에 있는 여러 개 한 번에 import
+        import show, {addTextToBody, num, age} from './module_aa.js'
+
+        //import 하는 것의 이름을 이곳에서 다르게 사용할 수 있음
+        import {num as n, age} from './module_aa.js'
+
+        show();
+        addTextToBody("Nice");
+        alert(num + "\n" + age)
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

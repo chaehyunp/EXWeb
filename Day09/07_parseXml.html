@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS XML parse</title>
+    </head>
+    <body>
+        <script>
+            //xml 데이터 [특정한 형식이 있는 문자열]
+            var xml = "<movie><title>분노의질주</title><genre>액션</genre></movie>";
+
+            //xml을 html의 DOM tree document로 객체처럼 변환해주는 기능을 가진 파서 이용
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(xml, 'application/xml');
+            //documet 처럼 만든것, 원래는 반복문 돌려서 값을 나누어야 함
+            var title = doc.getElementsByTagName('title')[0].textContent;
+            alert(title);
+            
+
+        </script>
+    </body>
+</html>

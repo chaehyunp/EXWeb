@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS es6 class</title>
+</head>
+<body>
+    <script>
+
+        //객체를 생성하는 새로운 방법 : class 키워드의 등장
+
+        //1. 클래스 선언 [ 객체를 만드는 것이 아님 ]
+        class Person {
+            //멤버변수 (property)
+            name = "Sam" //전역변수 아님
+            age = 20
+            address
+
+            //생성자 메소드 존재
+            constructor() {
+                document.write("Person 객체 생성<br>")
+                //생성자 안에서도 this
+                // this.age = 30
+                //생성자 안에서 새로운 멤버변수 추가
+                this.tel = "010-1234-5678"
+            }
+
+            //멤버함수 (method)
+            show(){
+                //document.write(name + " : " + age)
+                document.write(this.name + " : " + this.age + "<br>")
+            }
+        }
+
+        //2. 객체 생성
+        let person = new Person()
+        person.show()
+
+        //값을 입력하지 않은 멤버 출력
+        document.write(person.address + "<br>")
+        document.write(person.tel + "<br>")
+
+    </script>
+
+    <hr>
+
+    <script>
+
+        //같은 .html 문서에서 연결한 다른 script의 Person 클래스 사용가능?
+        //이미 html에서 만들었기때문에 클래스가 있음, 차례로 썼기때문에 객체 생성 가능
+        let person2 = new Person
+        person2.show()
+
+        //객체를 생성하면서 값 전달 - 생성자의 파라미터 사용
+        class Member {
+
+            // constructor(id, pw) {
+            //     this.id = id
+            //     this.pw = pw
+            // }
+
+            
+            //생성자 오버로딩 - 불가 [ 치명적 에러 ]
+            // constructor() {
+            //     this.id = "없음"
+            //     this.pw = "없음"
+            // }
+
+            //오버로딩 같은 효과를 주고 싶다면 - 파라미터의 default 값
+            constructor(id="없음", pw="없음") { //값을 받지않으면 기본값으로
+                this.id = id
+                this.pw = pw
+            }
+
+            show(){
+                document.write(this.id + " , " + this.pw + "<br>")
+            }
+
+            //일반 메소드도 오버로딩이 안될까?
+            out() {
+                document.write("no data<br>")
+            }
+            
+            //JS는 오버로딩이 존재하지 않음 - 함수 덮어쓰기 overwrite
+            out(a) {
+                document.write(a+"<br>")
+            }
+
+            //리턴하는 메소드는 특별할 것이 없음
+            add(a,b) {
+                return a+b
+            }
+
+            //메소드를 익명함수로 만들수도 있음
+            display = function() {
+                document.write("display 익명함수")
+            }
+
+            //class 밖에 정의한 함수를 메소드로 등록할 수 있음
+            play = aaa //aaa는 선언적 함수이므로 쓴 순서와 관계없이 인식됨
+
+        }
+
+        let member = new Member("abcd", "1234")
+        member.show()
+
+        //혹시 값을 전달하지 않으면? 생성자의 오버로딩? - 치명적 에러 : script 전체가 실행되지 않음
+        let member2 = new Member()
+        member2.show()
+
+        //일반 메소드 오버로딩 테스트
+        member.out()
+        member.out(10)
+
+        //메소드 리턴받기
+        let sum = member.add(5,3)
+        document.write(sum+"<br>")
+
+        //익명함수로 정의한 메소드 호출
+        member.display()
+
+        //선언적 함수
+        function aaa() {
+            document.write("aaa - " + this.id)
+        }
+
+        //외부함수를 메소드로 등록하고 호출
+        member.play()
+
+    </script>
+
+    <hr>
+
+    <script>
+
+        //class 상속
+
+        //상속해줄 클래스[이름,나이]
+        class Human {
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            show() {
+                document.write(`name : ${this.name}, age : ${this.age}`)
+            }
+        }
+
+        let h = new Human("Sam", 20)
+        h.show()
+        document.write("<br>")
+
+        //상속받기[이름,나이,전공]
+        class Student extends Human {
+            constructor(name,age,major) {
+                //JS는 반드시 명시적으로 부모생성자를 호출해야만함 - 안하면 에러
+                super(name,age)
+                this.major = major
+            }
+            //상속받은 메소드 수정 - 오버라이드
+            show() {
+                super.show()
+                document.write(`, major : ${this.major}`)
+            }
+        }
+
+        let stu = new Student("Robin",25,"Android")
+        stu.show()
+
+    </script>
+
+    <hr>
+
+    <script>
+        //static 멤버
+        class First {
+            static show() {
+                document.write('static method show...<br>')
+            }
+            static name = "Kim"
+
+            constructor() {
+                //static this.age = 20 //ERROR
+            }
+        }
+        //객체 생성 없이 사용가능
+        First.show()
+
+        //static 멤버변수 사용
+        document.write('static name : ' + First.name + '<br>')
+
+        //static도 클래스 설계 밖에서 추가할 수 있음
+        First.num = 50
+        document.write('static num' + First.num + '<br>')
+
+    </script>
+
+    <hr>
+
+    <script>
+        //구조분해할당 문법
+        class Nice {
+            name = "Hong"
+            age = 20
+            address = "Seoul"
+        }
+
+        let nice = new Nice
+        document.write('name : ' + nice.name + '<br>')
+
+        //객체의 특정멤버를 뽑아서 일반변수에 대입하여 사용하는 문법
+        // let name = nice.name
+        let {name} = nice
+
+        document.write('name : ' + name + '<br>')
+
+        //구조분해할당이 가장 많이 활용되는 형태 - 함수의 파라미터로 객체를 전달
+        //nice 객체의 주소(address)를 출력해주는 기능함수
+        function showNiceAddress({address}){
+            document.write("address : " + nice.address + "<br>")
+        }
+
+        showNiceAddress(nice) //객체를 파라미터로 전달
+
+        //구조분해할당 주의점 : 멤버의 이름이 다르면 할당 불가능
+        let {addss} = nice
+        document.write("address : " + addss + "<br>")
+
+        //특이한 구조분해 할당
+        //특정멤버를 제외한 나머지들을 하나의 객체로 할당
+        class Hello {
+            aaaa = 10
+            bbbb = 20
+            cccc = 30
+            dddd = 40
+        }
+
+        let hello = new Hello()
+        const {aaaa, ...rest} = hello //...rest : 나머지 멤버들을 가지는 객체
+        document.write("aaaa : " + aaaa + "<br>")
+        document.write("aaaa : " + rest.bbbb + "<br>")
+        document.write("aaaa : " + rest.cccc + "<br>")
+        document.write("aaaa : " + rest.dddd + "<br>")
+
+    </script>
+</body>
+</html>

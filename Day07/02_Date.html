@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Date 내장객체</title>
+
+        <script>
+            //JS에서 미리 설계해놓은 내장객체들(생성자함수들 - 자바의 class)
+            //Date, Number, String, Math,, Array...
+
+            //1. Date
+            var a = new Date(); //날짜관리 객체 생성
+            document.write(a +"<br>"); //참조변수를 출력하면 자동 .toString()발동
+            document.write(a.toString() +"<br>");
+            document.write(typeof(a)+"<br>");
+
+            //Date 생성자함수의 주요기능 메소드들
+            document.write(a.toDateString() +"<br>");
+            document.write(a.toLocaleString() +"<br>");
+            document.write(a.getYear() +"<br>"); //1900년부터 기준
+            document.write(a.getFullYear() +"<br>");
+            document.write(a.getMonth() +"<br>"); //0~11
+            document.write(a.getDate() +"<br>"); 
+            document.write(a.getHours() +"<br>"); //0~23
+            document.write(a.getMinutes() +"<br>");
+            document.write(a.getSeconds() +"<br>");
+            document.write(a.getTime() +"<br>"); //currentTimeMillis() 1970/1/1 09:00:00부터 ms마자 카운트(다른 언어는 00:00:00)
+
+            //set도 가능
+            var b= new Date(); //현재시간
+            document.write(b.toLocaleString() +"<br>");
+            b.setFullYear(2018);
+            document.write(b.toLocaleString() +"<br>");
+
+            //생성자의 파라미터를 통해 특정 날짜 설정
+            var c= new Date(2025, 4, 9); //2025년 5월 9일
+
+            var c= new Date("Wed Sep 13 2017 13:40:13 GMT+0900");
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date("Wed Sep 13 2017");
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date("2017. 9. 13");
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date(0);
+            document.write(c.toLocaleString() +"<br>");
+
+            // 두 날짜 사이의 비교
+            var a= new Date("2017. 9. 12");
+            var b= new Date();
+
+            var diff= b.getTime() - a.getTime(); //밀리초 차이
+            var diff= b-a; //자동으로 getTime()으로 계산
+            document.write("두 날짜 차이 : " + diff +"<br>");
+
+            //ms를 일수로 변환
+            var sec= diff/1000;
+            var min= sec/60;
+            var hour= min/60;
+            var day= hour/24;
+
+            //한줄로 계산
+            var day= diff/(1000*60*60*24);
+            document.write("두 날짜 차이(day) : " + day +"<br>");
+
+            //소수점 제거 (round 반올림 ceil 올림 floor 내림)
+            day= Math.floor(day);
+            document.write("두 날짜 차이(day) : " + day +"일<br>");
+
+        </script>
+    </head>
+</html>

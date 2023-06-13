@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Array object</title>
+        <script>
+            //5. Array
+            //Day06에서 배열수업
+
+            var arr = new Array(10,20,30);
+
+            //배열의 주요 기능 메소드들
+            //1) 배열 붙이기 concat
+            var arr1 = [3,4,5];
+            var arr2 = arr.concat(arr1); //원본은 안바뀜
+            document.write(arr2 + "<br>");
+
+            //2) 특정 요소값 위치 찾기 - indexOf
+            document.write(arr.indexOf(30, 1) + "<br>"); //배열의 1번방부터 검색, 못찾으면 -1
+
+            //3) push, pop [stack 구조 - FILO(First Input Last Out)] 
+            //이 때, 값을 읽어오는것이 아니라 실제로 값이 빠지는것
+            var stack = [1,2,3,4,5];
+            document.write(stack+"<br>");
+
+            stack.push(10); //새로운 값 삽입, 마지막에 추가됨
+            document.write(stack+"<br>");
+
+            stack.pop(); //가장 마지막 요소가 꺼내짐, 배열의 길이가 바뀜
+            document.write(stack+"<br>");
+
+            //4) push, shift [queue 구조 - FIFO(First Input First Out)]
+            var que = [1,2,3,4,5];
+            document.write(que+"<br>");
+
+            que.push(10); //새로운 값 삽입, 마지막에 추가됨
+            document.write(que+"<br>");
+
+            que.shift(); //가장 처음에 넣은 요소가 꺼내짐
+            document.write(que+"<br>");
+
+            //5) sort - 정렬, 실제 요소들의 위치가 변경됨
+            var arr = [3,5,4,8,9,1,6,7];
+            arr.sort(); //실제 원본이 바뀜
+            document.write(arr + "<br>");
+
+            //두자리 이상일때 문제 발생
+            arr = [3,1,15,48,754,1234,54,90];
+            arr.sort(); //알파벳순 오름차순임, 앞글자 한자리씩 비교
+            document.write(arr + "<br>");
+
+            //해결하려면 sort()의 파라미터에 '정렬기준함수'를 넣어줌
+            arr.sort(function(a,b){return a-b;}); //오름차순, 두 수를 비교하여 음수면 그대로 두고 양수면 자리를 바꾸는 식 : bubble sort
+            document.write(arr + "<br>");
+            
+            arr.sort(function(a,b){return b-a;}); //내림차순
+            document.write(arr + "<br>");
+
+            //알파벳은 기본 오름차순
+            var arr= ["abc","aab","bsc","adsf","asdf"];
+            arr.sort();
+            document.write(arr +"<br>");
+
+            //알파벳의 내림차순 '정렬기준함수'
+            var desc = function(a,b){
+                if(a>b) return -1;
+                if(b>a) return 1;
+                return 0;
+            }
+            arr.sort(desc);
+            document.write(arr +"<br>");
+
+            //6) slice - 배열의 일부분을 잘라서 새로운 배열 리턴
+            var arr = [10,20,30,40,50,60,70,80,90];
+            var arr2 = arr.slice(3); //3번방부터 잘라서 새로운 배열로
+            document.write(arr +"<br>");
+            document.write(arr2 +"<br>");
+            var arr3 = arr.slice(3,6); //3번방부터 6방 전까지 잘라서 새로운 배열로
+            document.write(arr +"<br>");
+            document.write(arr3 +"<br>");
+
+            //7) join - 배열요소중 특정문자를 구분자로 하여 하나의 문자열로 리턴
+            var arr = ["010","1234","5678"];
+            var s = arr.join("-");
+            document.write(s +"<br>");
+
+            //8) filter - '지정함수'이용 [sort와 같음]
+            var arr = [1,2,3,4,5,2,7,-1,-5,-7,3.14];
+            //배열 요소들 중에서 3보다 큰 값만
+            var arr2 = arr.filter(function(e){
+                return e>3; //return의 결과가 true인 element들만 새로운 배열로 리턴
+            })
+            document.write(arr +"<br>");
+            document.write(arr2 +"<br>");
+
+            //요소의 값이 3보다 크고 index 번호가 5 이상인 요소들
+            var arr3 = arr.filter(function(e,index,array){
+                return e>3 && index>=5;
+            })
+
+            //9) reverse - 배열의 요소순서를 뒤집기, 원본의 요소위치 변경
+            var arr = ["aa","bb","cc"];
+            arr.reverse();
+            document.write(arr + "<br>");
+
+        </script>
+
+        <hr>
+
+        <script>
+
+            //ECMAscript5에서 새로이 추가된 배열 기능 메소드
+            
+            var aa = [10,20,30,40,50];
+
+            //배열의 요소값에 각각 접근하는 반복문 기능메소드
+            aa.forEach(function(value, index,array){
+                document.write(index + " : " + value + "<br>");
+            });
+
+            //forEach와 구조적으로 같지만, 배열의 각 요소에 작업후 새로운 배열을 만들어 리턴해주는 메소드
+            var bb = aa.map(function(value, index,array){
+                return value +1;
+            });
+            document.write(bb + "<br>");
+
+
+        </script>
+    </head>
+</html>

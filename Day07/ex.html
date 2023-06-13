@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ex.372p</title>
+        <script>
+
+            //4. 0부터 백만까지 더하는데 걸리는 시간을 측정
+
+            //5. 문자열 받아서 첫번째 글자 대문자로 변환하는 메소드
+            function strCap(str){
+                var result = str.replace(str.charAt(0), str.charAt(0).toUpperCase());
+                return result;
+            }
+
+            document.write(strCap("hong"));
+
+            //7.
+            var movies = ["터미네이터","트랜스포머"];
+            movies.push("맨오브스틸");
+            movies[movies.length -2] = "스파이더맨";
+            alert(movies[movies.length -1]);
+
+            //8. 배열에서 랜덤하게 하나의 요소 선택 출력
+            var arr = ["사과","오렌지","귤","당근","케일"];
+            var rnd = Math.floor(Math.random() * (arr.length -1));
+            alert(arr[rnd]);
+
+            document.write("<hr>");
+
+            //9. 해당 배열요소를 찾아 인덱스 반환
+            var arr = ["Hello", 10, 32.6, true];
+            
+            function find(arr,value){
+                return arr.indexOf(value);
+            }
+            document.write(find(arr,"Hello"));
+
+            document.write("<hr>");
+
+            //10. 비속어 검출, "XXX"를 포함한다면 true 리턴
+            function check(str){
+                var result = str.match(/XXX/i);
+                if (result != null) return true;
+                else return false;
+            }
+            document.write(check("buy XXX now"));
+
+
+            
+        </script>
+    </head>
+</html>

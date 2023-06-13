@@ -1,0 +1,201 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS custom object</title>
+        <script>
+            //자바에서 객체의 2가지 종류
+            //1. 내장객체 : document, window, navigation.. / Date(), String(), Number(), Array(), Math...
+            //2. 사용자정의 객체
+
+            //객체를 만드는 2가지 방법
+            //1. 리터럴 객체 [객체를 생성하면서 설계하는 방식]
+            var person = {
+                //멤버변수 - 속성 property
+                name:"Sam",
+                age:20,
+
+                //멤버함수 - 메소드 method
+                show: function(){
+                    // document.write(name + ", " + age + "<br>");
+                    //this 키워드가 없으면 멤버변수를 인식하지 못함, 전역변수로 인식
+                    document.write(this.name + ", " + this.age + "<br>");
+                }
+            };
+
+            //객체 멤버변수(속성) 출력
+            document.write("name: " + person.name + ", ");
+            document.write("age : " + person.age + "<br>");
+
+            //객체 멤버함수(메소드) 출력
+            person.show();
+
+            //새로운 리터럴 객체를 만들려면 다시 설계해야함
+            var person2 = {
+                name:"Robin",
+                age:25,
+
+                show: function(){
+                    document.write(this.name + ", " + this.age + "<br>");
+                },
+                add: function(a,b){
+                    var c = a+b
+                    document.write(c + "<br>");
+                }
+            };
+
+            person2.show();
+            person2.show(10); //파라미터 없는데 전달하면? 상관없음(무시됨)
+
+            person2.add(5,3);
+            // person.add(10,20); //없는 메소드는 호출불가 : 여기서 에러, 이후 코드가 읽혀지지 않음 - 인터프리트 언어
+
+            //JS는 유연한 언어여서 객체를 생성한 후에 객체에 멤버를 추가할 수 있음
+            person.tel = "010-1234-5678"; //새로운 property가 추가
+            document.write(person.tel + "<br>");
+
+            //tel까지 포함하여 출력해주는 기능메소드 새로이 추가
+            person.out = function(){
+                document.write("out : " + this.name + ", " + this.age + ", " + this.tel + "<br>"); //확장함수
+            }
+            person.out();
+
+            //혹시 대입한적이 없는 멤버변수를 출력하면?
+            document.write(person.address); //속성은 추가한것이고, 값은 undefined
+            document.write("<br>");
+
+            //리터럴 객체는 여러 여러 개의 속성, 메소드가 있을때
+            //객체를 생성할때마다 관련 설계코드를 모두 다시 작성해야함
+
+            //2. 생성자 함수를 이용한 객체 생성[new 키워드로 객체 생성]
+            //학생 객체 설계 : 이름, 나이, 전공
+
+            function Student(){
+                //멤버변수 - property
+                this.name = "aaa";
+                this.age = 23;
+                this.major = "android";
+
+                //멤버함수 = method
+                this.show = function(){
+                    document.write("student : " + this.name + ", " + this.age + ", " + this.major + "<br>");
+                }
+
+                this.setMember = function(name,age,major){
+                    this.name = name;
+                    this.age = age;
+                    this.major = major;
+                }
+            }
+
+            //위 설계도(생성자 함수)를 이용하여 객체 생성
+            var stu = new Student();
+            stu.show();
+
+            //또다른 학생 객체가 필요할때 또 설계할 필요없이 new만
+            var stu2 = new Student();
+            //두번째 학생의 멤버 속성값 대입
+            stu2.name = "bbb";
+            stu2.age = 25;
+            stu2.major = "ios";
+            stu2.show();
+
+            //이런식으로 멤버값을 하나하나 대입하는것은 비효율적
+            var stu3 = new Student();
+            stu3.setMember("ccc", 26, "web"); //멤버값을 입력해주는 기능메소드
+            stu3.show();
+
+            //이런식이면 객체 생성후에 항상 멤버값을 대입하는 기능메소드를 호출하는 코드가 추가로 요구됨
+            //객체를 생성하면서 멤버값들을 전달하면 코드가 더 간결해짐 -> 생성자 함수에 파라미터 전달
+
+            function Stu(name, age, major){
+                this.name = name;
+                this.age = age;
+                this.major = major;
+
+                this.show = function(){
+                    document.write("stu : " + this.name + ", " + this.age + ", " + this.major + "<br>");
+                }
+
+                //setter, getter method
+                this.setName= function(name){
+                    this.name= name;
+                }
+
+                this.getName= function(){
+                    return this.name;
+                }
+            }
+
+            var s = new Stu("Kim", 20, "native");
+            s.show();
+
+            var s2 = new Stu(); //값을 전달하지않으면..? undefined
+            s2.show();
+            
+            s2.setName("Hong");
+            document.write("name: " + s2.getName() + "<br>");
+
+            function Car(model,speed,color){
+                this.model = model;
+                this.speed = speed;
+                this.color = color;
+
+                this.brake = function(){
+                    this.speed -= 10;
+                }
+
+                this.accel = function(){
+                    this.speed += 10;
+                }
+
+                this.show = function(){
+                    document.write("모델 : " + this.model + " 속도 : " + this.speed + " 색상 : " + this.color + "<br>");
+                }
+                
+            }
+            var myCar = new Car("aaa",100,"Red");
+            myCar.show();
+            myCar.accel();
+            myCar.show();
+            myCar.brake();
+            myCar.show();
+
+            //추가적인 내용들
+            //1) in 키워드 : 연산자
+            document.write("name" in stu + "<br>"); //name 속성이 있으면 true, 없으면 false
+
+            //2) 객체 안에 객체가 멤버로 존재할 수 있음
+            var flight = {
+                airline: "Korean Air",
+                number: 986,
+                arrival: {nation:"USA", city:"NewYork"}
+            }
+
+            document.write(flight.arrival.city+"<br>");
+            document.write(flight['airline']+"<br>");//연관배열로 멤버접근 가능
+            document.write("<br>");
+
+            //3) Object.create() 메소드 : 객체 clone기능
+            //리터럴 객체의 단점 : 같은 구성의 객체를 또 생성할때 코드를 모두 다시 작성
+            var p1= {
+                name:"aaa",
+                age:20,
+                show:function(){
+                    document.write("show: " + this.name+","+this.age+"<br>");
+                }
+            }
+
+            var p2= Object.create(p1); //p1객체를 복제한 새로운 객체 리턴
+
+            p1.show();
+
+            p2.name="bbb";
+            p2.age= 25;
+            p2.show();
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

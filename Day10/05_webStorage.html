@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Web Storage</title>
+    </head>
+    <body>
+        
+        <h2 id="aa"></h2>
+        <hr>
+        <h2 id="bb"></h2>
+
+        <script>
+            //웹스토리지 : 웹문서(html)가 데이터를 client의 컴퓨터에 저장할 수 있는 기법(일종의 쿠키 - 4KB) - 5MB 저장 가능
+
+            //웹스토리지 2가지 저장소
+            //1. localStorage
+
+            //예제) 페이지 방문 횟수 저장
+            if(!localStorage.cnt) localStorage.cnt = 0; //cnt 변수 초기화
+
+            //기존 cnt 변수값 1증가
+            // localStorage.cnt += 1; //스토리지는 모든값을 문자열로 저장하고 있음
+            // localStorage.cnt = parseInt(localStorage.cnt)+1;
+            localStorage.cnt++;
+
+            //출력
+            document.getElementById('aa').innerHTML = localStorage.cnt + "번째 방문입니다";
+
+            //2. sessionStorage
+            if(!sessionStorage.cnt) sessionStorage.cnt = 0;
+            sessionStorage.cnt = localStorage.cnt = parseInt(localStorage.cnt)+1;
+            document.querySelector('#bb').innerHTML = `${sessionStorage.cnt}번째 방문입니다`;
+
+        </script>
+
+    </body>
+</html>

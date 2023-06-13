@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS DragDrop</title>
+
+        <style>
+            #cart{
+                width: 400px; height: 150px; padding: 10px; border: 1px dotted darkorange;
+            }
+        </style>
+
+        <script>
+
+            var id;
+            var isOverCart = false;
+
+            function startDrag(){
+                //드래그가 되는 요소의 식별 id 값을 변수에 저장
+                id = event.target.id;
+            }
+
+            function overDrag(){
+                //요소 위에 다른 요소가 놓여질 수 없도록 되어있는 디폴트 값을 방지 - 드롭을 허용시키도록
+                event.preventDefault();
+                isOverCart = true;
+            }
+
+            function endDrag(){
+
+                if(isOverCart){
+                    //처음 드래그가 시작될때 저장했던 id를 이용하여 요소찾기
+                    var e = document.getElementById(id);
+                    document.getElementById('cart').appendChild(e);
+                    isOverCart = false;
+                }
+                
+            }
+
+            function leaveDrag(){
+                isOverCart = false;
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="cart" ondragover="overDrag()" ondragleave="leaveDrag()"></div>
+        <img src="./image/zzang_coffee_01.jpg" alt="" width="150" id="img1" ondragstart="startDrag()" ondragend="endDrag()">
+        <img src="./image/zzang_coffee_03.jpg" alt="" width="150" id="img2" ondragstart="startDrag()" ondragend="endDrag()">
+        
+    </body>
+</html>

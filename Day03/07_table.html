@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Table style</title>
+        <style>
+            table{border: 2px solid; border-collapse: collapse; text-align: center;}
+            th,td{border: 1px solid; padding: 10px 5px;}
+            th{background-color: tomato; color: white;}
+            tr:nth-child(2n){background-color: antiquewhite;}
+            td:first-child{width: 40%;}
+            th{border-bottom: double cornflowerblue;}
+
+            /* 직접 요소를 만들지 않았지만 테이블에 숨어있는 요소가 존재함 */
+            /* theader - tbody - tfooter */
+            /* tbody는 무조건 만들어짐 */
+            table>:nth-child(1){border: 10px solid black;}
+            table tr{color: seagreen;}
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>이메일</th>
+            </tr>
+            <tr>
+                <td>김철수</td>
+                <td>soo@google.com</td>
+            </tr>
+            <tr>
+                <td>김영희</td>
+                <td>hee@google.com</td>
+            </tr>
+            <tr>
+                <td>홍길동</td>
+                <td>hong@google.com</td>
+            </tr>
+        </table>
+    </body>
+</html>
